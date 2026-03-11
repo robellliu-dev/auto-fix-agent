@@ -37,9 +37,6 @@ target_communities:
 
 # AI Configuration
 ai:
-  model: "gpt-4o"
-  temperature: 0.1
-  max_tokens: 4000
   retry_attempts: 3
 
 # Agent Behavior
@@ -69,7 +66,7 @@ pip install -r requirements.txt
 3. Set up environment variables:
 
 ```bash
-export OPENAI_API_KEY="your-openai-api-key"
+export GITHUB_TOKEN="your-github-token"
 ```
 
 ## Usage
@@ -99,7 +96,7 @@ python main.py --config config.yaml --max-prs 5
 
 - Python 3.8+
 - GitHub token with repo permissions
-- OpenAI API key
+- trae CLI
 
 ## License
 
