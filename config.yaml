@@ -1,0 +1,56 @@
+# AI Agent Configuration
+
+# GitHub Configuration
+github:
+  token: "${GITHUB_TOKEN}"
+  agent_repo: "robellliu-dev/auto-fix-agent"
+  user_agent: "AutoFixAgent/1.0"
+
+# Target Open Source Communities
+target_communities:
+  - name: "pytorch"
+    repo: "pytorch/pytorch"
+    default_branch: "main"
+    contributing_guide: ".github/CONTRIBUTING.md"
+    test_command: "python -m pytest"
+    build_command: "python setup.py build"
+    labels: ["bug", "good first issue"]
+  
+  - name: "vllm"
+    repo: "vllm-project/vllm"
+    default_branch: "main"
+    contributing_guide: "CONTRIBUTING.md"
+    test_command: "python -m pytest"
+    build_command: "pip install -e ."
+    labels: ["bug", "help wanted"]
+  
+  - name: "sglang"
+    repo: "sgl-project/sglang"
+    default_branch: "main"
+    contributing_guide: "CONTRIBUTING.md"
+    test_command: "python -m pytest"
+    build_command: "pip install -e ."
+    labels: ["bug", "enhancement"]
+  
+  - name: "triton"
+    repo: "openai/triton"
+    default_branch: "main"
+    contributing_guide: "CONTRIBUTING.md"
+    test_command: "python -m pytest"
+    build_command: "cmake -B build && cmake --build build"
+    labels: ["bug", "good first issue"]
+
+# AI Configuration
+ai:
+  model: "gpt-4o"
+  temperature: 0.1
+  max_tokens: 4000
+  retry_attempts: 3
+
+# Agent Behavior
+agent:
+  max_prs_per_day: 10
+  working_dir: "./workspace"
+  pr_title_template: "[{type}] {short_description}"
+  commit_message_template: "{type}: {description}\n\nFixes #{issue_number}"
+  pr_body_template: "## Issue Fix\n\nFixes #{issue_number}\n\n### Changes Made\n{changes}\n\n### Testing\n{testing}\n\n### Checklist\n- [x] Tests pass\n- [x] Builds successfully\n- [x] Follows contributing guidelines"
